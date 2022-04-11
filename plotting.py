@@ -43,8 +43,8 @@ def createGraphFromTwoFunctions(scatterFunction, lineFunction, squaredError):
 
     graphPlot = figure(title="Graph for train model {} vs ideal {}. Calculated Squared error = {}".format(functionOneName, functionTwoName, squaredError),
                x_axis_label='x', y_axis_label='y')
-    graphPlot.scatter(functionOneDataframe["x"], functionOneDataframe["y"], fill_color="red", legend_label="Train")
-    graphPlot.line(functionTwoDataframe["x"], functionTwoDataframe["y"], legend_label="Ideal", line_width=2)
+    graphPlot.scatter(functionOneDataframe["x"], functionOneDataframe["y"], fill_color="green", legend_label="Train")
+    graphPlot.line(functionTwoDataframe["x"], functionTwoDataframe["y"], legend_label="Ideal", line_width=5)
     return graphPlot
 
 
@@ -71,7 +71,7 @@ def classificationGraphPlot(point, idealFunction):
         dataSrc = ColumnDataSource(functionClassificationDataframe.reset_index())
 
         band = Band(base='x', lower='lower', upper='upper', source=dataSrc, level='underlay',
-            fill_alpha=0.3, line_width=1, line_color='green', fill_color="green")
+            fill_alpha=0.5, line_width=4, line_color='red', fill_color="red")
 
         graphPlot.add_layout(band)
         graphPlot.scatter([point["x"]], [round(point["y"], 4)], fill_color="red", legend_label="Test CSV points", size=8)
